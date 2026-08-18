@@ -1,0 +1,104 @@
+const camera = document.getElementById("camera");
+const startCamera = document.getElementById("startCamera");
+const takePhoto = document.getElementById("takePhoto");
+
+const previewSection = document.getElementById("previewSection");
+const photoPreview = document.getElementById("photoPreview");
+const savePhoto = document.getElementById("savePhoto");
+const retake = document.getElementById("retake");
+
+const cameraMessage = document.getElementById("cameraMessage");
+
+let stream = null;
+let photoURL = null;
+
+async function openCamera() {
+  try {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      cameraMessage.textContent =
+        "Camera is not supported by this browser.";
+      return;
+    }
+
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: "environment"
+      },
+      audio: false
+    });
+
+    camera.srcObject = stream;
+
+    cameraMessage.style.display = "none";
+    takePhoto.disabled = false;
+    startCamera.textContent = "Camera On";
+
+  } catch (error) {
+    cameraMessage.style.display = "block";
+
+    if (error.name === "NotAllowedError") {
+      cameraMessage.textContent =
+        "Camera permission was denied. Please allow camera access.";
+    } else {
+      cameraMessage.textContent =
+        "Could not open camera. Make sure the website uses HTTPS.";
+    }
+  }
+}
+
+startCamera.addEventListener("click", openCamera);
+
+takePhoto.addEventListener("click", function () {
+
+  if (!stream) {
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+
+  canvas.width = camera.videoWidth;
+  canvas.height = camera.videoHeight;
+
+  const context = canvas.getContext("2d");
+
+  context.drawImage(
+    camera,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  canvas.toBlob(function (blob) {
+
+    if (!blob) {
+      return;
+    }
+
+    if (photoURL) {
+      URL.revokeObjectURL(photoURL);
+    }
+
+    photoURL = URL.createObjectURL(blob);
+
+    photoPreview.src = photoURL;
+    savePhoto.href = photoURL;
+
+    previewSection.classList.remove("hidden");
+
+  }, "image/jpeg", 0.92);
+});
+
+retake.addEventListener("click", function () {
+  previewSection.classList.add("hidden");
+});
+
+window.addEventListener("pagehide", function () {
+
+  if (stream) {
+    stream.getTracks().forEach(function (track) {
+      track.stop();
+    });
+  }
+
+});
