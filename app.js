@@ -102,3 +102,26 @@ window.addEventListener("pagehide", function () {
   }
 
 });
+const openGallery = document.getElementById("openGallery");
+
+openGallery.addEventListener("click", function () {
+  const input = document.createElement("input");
+
+  input.type = "file";
+  input.accept = "image/*";
+
+  input.click();
+
+  input.addEventListener("change", function () {
+    const file = input.files[0];
+
+    if (!file) return;
+
+    const imageURL = URL.createObjectURL(file);
+
+    photoPreview.src = imageURL;
+    savePhoto.href = imageURL;
+
+    previewSection.classList.remove("hidden");
+  });
+});
