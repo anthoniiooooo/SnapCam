@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnapCam</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+      <h1>SNAPCAM</h1>
+      <p>Camera • Chat • Connect</p>
+    </header>
+
+    <main>
+
+      <div class="camera-box">
+        <video id="camera" autoplay playsinline></video>
+
+        <div id="cameraMessage">
+          Camera is ready
+        </div>
+      </div>
+
+      <div class="controls">
+
+        <button id="startCamera">
+          📷 Start Camera
+        </button>
+
+        <button id="takePhoto">
+          ⚪ Take Photo
+        </button>
+
+      </div>
+
+      <div id="previewSection" class="hidden">
+
+        <h2>Photo Preview</h2>
+
+        <img id="photoPreview">
+
+        <div class="buttons">
+
+          <a id="savePhoto" download="snapcam-photo.jpg">
+            💾 Save
+          </a>
+
+          <button id="retake">
+            🔄 Retake
+          </button>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer>
+      🔒 Your camera is used only after permission.
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+  </html>
