@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #08090c;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  width: 100%;
+  max-width: 620px;
+  margin: auto;
+  padding: 18px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 4px;
+}
+
+header p {
+  color: #999;
+  margin-top: 6px;
+}
+
+.camera-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #111;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+}
+
+#camera {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#cameraMessage {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 12px;
+  text-align: center;
+  background: rgba(0,0,0,0.65);
+  border-radius: 15px;
+  color: #ddd;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+button,
+#savePhoto {
+  border: none;
+  border-radius: 15px;
+  padding: 13px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#startCamera {
+  background: white;
+  color: black;
+}
+
+#takePhoto {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid white;
+  background: transparent;
+  color: white;
+}
+
+#takePhoto:disabled {
+  opacity: 0.4;
+}
+
+#previewSection {
+  margin-top: 20px;
+  padding: 15px;
+  background: #14151a;
+  border-radius: 20px;
+}
+
+#previewSection h2 {
+  font-size: 18px;
+}
+
+#photoPreview {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.buttons > * {
+  flex: 1;
+}
+
+#savePhoto {
+  background: white;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+}
+
+#retake {
+  background: #292b32;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  color: #777;
+  font-size: 12px;
+  margin-top: 18px;
+    }
