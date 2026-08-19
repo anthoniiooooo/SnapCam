@@ -1,3 +1,15 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyDaOnBZCE7LPNe-8NqueEB2gzb7nSxMyLo",
+  authDomain: "snapcam-c078b.firebaseapp.com",
+  databaseURL: "https://snapcam-c078b-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "snapcam-c078b",
+  storageBucket: "snapcam-c078b.firebasestorage.app",
+  messagingSenderId: "68291316614",
+  appId: "1:68291316614:web:e8af11e4fcc98ba8833a07"
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 const camera = document.getElementById("camera");
 const startCamera = document.getElementById("startCamera");
 const takePhoto = document.getElementById("takePhoto");
